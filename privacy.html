@@ -1,51 +1,211 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Política de privacidade</title><link rel="stylesheet" href="style.css"></head><body><main>
 <h1>Política de privacidade</h1>
-<p class="muted">Checkout - Supermercado Simulator · Atualizada em 12 de outubro de 2026 (contas e progresso na nuvem)</p>
+<p class="muted">Checkout: Supermarket Sim · Atualizada em 7 de novembro de 2026</p>
 <nav><a href="#pt">Português</a><a href="#en">English</a><a href="index.html">Início</a></nav>
 
 <section class="lang" id="pt">
 <h2>Quem somos</h2>
-<p>O jogo Checkout - Supermercado Simulator ("o jogo") é desenvolvido por Lucas Furini, desenvolvedor independente, responsável pelo tratamento dos dados descritos aqui. Contato: <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
-<h2>O que o jogo guarda</h2>
-<p>Sem entrar numa conta, o jogo não pede nome, e-mail nem senha, e o progresso (mercado, moedas, diamantes, configurações) fica salvo só no próprio aparelho.</p>
-<h2>Conta Google e progresso na nuvem (opcional)</h2>
-<p>Se você tocar em <strong>Entrar com Google</strong>, recebemos do Google o identificador da sua conta, o seu nome e o seu e-mail, e guardamos o seu progresso no nosso servidor para você continuar em outro aparelho. Guardamos: a conta (identificador do Google, nome, e-mail, datas de criação e último acesso), o progresso do jogo, um identificador do aparelho que enviou cada versão e até 10 cópias recentes do progresso, para recuperar algo que foi substituído por engano. Não recebemos a sua senha do Google. Os dados ficam no Prisma Postgres (servidores na Alemanha) e o servidor do jogo roda no Render (Alemanha). Você pode sair a qualquer momento ou apagar a conta em <strong>Guia › Conta e nuvem › Apagar conta</strong>, o que apaga para sempre a conta e todas as cópias do progresso na nuvem. Também pode pedir a exclusão por e-mail.</p>
+<p>O jogo Checkout: Supermarket Sim ("o jogo"), para iPhone (iOS) e Android, é desenvolvido por Lucas Lopes Furini, desenvolvedor independente, responsável pelo tratamento dos dados descritos aqui. Contato: <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
+<h2>Resumo</h2>
+<ul>
+<li>Você pode jogar sem criar conta: nesse caso o progresso fica só no seu aparelho.</li>
+<li>Se entrar com Google ou Apple, guardamos a conta e o progresso nos nossos servidores (Cloudflare) para você continuar em outro aparelho e usar os recursos sociais.</li>
+<li>O jogo usa o Firebase (Google) para estatísticas de uso, relatórios de falhas e notificações push, e o Google AdMob para vídeos premiados que só aparecem se você escolher assistir.</li>
+<li>O jogo não pede permissão de rastreamento (App Tracking Transparency) e não vende dados.</li>
+<li>Você pode apagar a conta e os dados da nuvem a qualquer momento, dentro do jogo.</li>
+</ul>
+
+<h2>Jogando sem conta</h2>
+<p>Sem entrar numa conta, o jogo não pede nome, e-mail nem senha, e o progresso (mercado, moedas, diamantes, configurações) fica salvo só no próprio aparelho; nada disso é enviado ao nosso servidor. Mesmo sem conta, o aparelho se comunica com serviços de terceiros descritos abaixo: estatísticas e relatórios de falhas (Firebase), anúncios (AdMob, só se você assistir um) e a loja do seu sistema (compras).</p>
+
+<h2>Conta Google ou Apple e progresso na nuvem (opcional)</h2>
+<p>Se você tocar em <strong>Entrar com Google</strong> ou <strong>Entrar com a Apple</strong> (Apple só no iPhone), recebemos do provedor o identificador da sua conta e, conforme o caso, o seu nome e o seu e-mail (a Apple pode fornecer um endereço de e-mail privado de encaminhamento, e envia o nome só se você o compartilhar no primeiro login). Com o Google, recebemos também o endereço da foto do seu perfil Google. Nunca recebemos a sua senha. Para o login com a Apple, guardamos também um código de renovação (refresh token) fornecido pela Apple, usado apenas para encerrar o acesso do jogo à sua conta Apple quando você apagar a conta do jogo.</p>
+<p>No nosso servidor guardamos:</p>
+<ul>
+<li>a conta: identificador do Google ou da Apple, e-mail, nome, endereço da foto do Google (se houver), data de criação e do último acesso;</li>
+<li>o progresso do jogo (mercado, moedas, diamantes, configurações, o registro das compras já creditadas e dados semelhantes), um resumo dele (como nível e experiência), o identificador do aparelho que enviou cada versão e até 10 cópias anteriores do progresso, para recuperar algo substituído por engano;</li>
+<li>o país aproximado da sua conexão (informado pela Cloudflare, não pelo GPS), usado no ranking do seu país;</li>
+<li>os dados dos recursos sociais, listados na próxima seção, se você os usar;</li>
+<li>o token de notificação push do aparelho, se você ativar as notificações (veja abaixo).</li>
+</ul>
+<p>O seu endereço IP é usado pelo nosso servidor apenas para limitar o número de requisições por minuto (proteção contra abuso), em memória, e não é gravado no nosso banco de dados. A Cloudflare, como provedora da hospedagem, processa endereços IP para entregar e proteger o serviço, conforme a política dela.</p>
+
+<h2>Recursos sociais: amigos, visitas, presentes, ajuda, pedidos, convites e rankings</h2>
+<p>Esses recursos só funcionam com conta. Para eles, o servidor cria o seu perfil e guarda: um código de amigo (8 letras), o nome do mercado que você escolhe (3 a 20 caracteres, com filtro de palavrões; 3 denúncias de jogadores diferentes escondem o nome até você trocá-lo), o avatar (um dos personagens do jogo), nível, estágio do mercado, experiência, total de curtidas recebidas, um bloco público com as obras em andamento e a nota do mercado, o país aproximado, e um contador de verificações antifraude (nível ou pontos impossíveis; jogadores com várias ocorrências são escondidos dos rankings). O jogo não tem chat nem mensagens de texto livre entre jogadores.</p>
+<ul>
+<li><strong>Amigos:</strong> entram por código de amigo ou link de convite; até 50 amigos. Guardamos os pedidos de amizade e a lista de amigos. O que acontece entre amigos (pedido ou aceite de amizade, presente diário, curtida, ajuda numa obra, pedido de produto atendido, prêmio de convite, resultado da liga) vira um item na sua caixa de entrada, que o jogo aplica no seu progresso e confirma; itens confirmados são apagados do servidor depois de 7 dias.</li>
+<li><strong>O que seus amigos aceitos veem:</strong> nome do mercado, avatar, nível, estágio, curtidas, o bloco público, os seus pedidos de produto abertos e, se você entrou com o Google, a foto do seu perfil Google (você pode desligar isso em <strong>Mostrar minha foto do Google para amigos</strong>; sem a foto, eles veem o avatar). Um amigo também pode <strong>visitar o seu mercado</strong>: o servidor entrega a ele uma cópia somente leitura do seu progresso salvo para mostrar o seu mercado.</li>
+<li><strong>Ajudas, presentes e pedidos:</strong> guardamos quem ajudou em qual obra (por até 30 dias), os presentes e curtidas do dia (para os limites diários) e os seus pedidos de produto (produto, quantidade, situação; expiram em 24 horas e, depois de fechados, são apagados após 7 dias).</li>
+<li><strong>Convites:</strong> guardamos quem convidou você e se as recompensas já foram dadas. No Android, o jogo lê uma vez, pelo Google Play (Install Referrer), se você instalou por um link de convite. A página do link de convite não carrega scripts externos nem rastreadores.</li>
+<li><strong>Rankings mundial e do país:</strong> mostram o top 100 e a sua posição. Essas listas são públicas, e podem ser lidas até por quem não entrou numa conta: aparecem código de amigo, nome do mercado, avatar, nível, experiência, estágio e país (bandeira). Você pode sair dessas listas desligando <strong>Aparecer no ranking</strong> na janela do ranking. O ranking de amigos só mostra você e seus amigos.</li>
+<li><strong>Liga semanal:</strong> você é colocado num grupo de até 30 jogadores da mesma divisão e faixa de nível. Os membros do grupo veem lugar, nome do mercado, avatar, nível e pontos. Guardamos seus pontos da semana, o resultado final e os prêmios por 8 semanas.</li>
+</ul>
+
+<h2>Estatísticas e relatórios de falhas (Firebase)</h2>
+<p>Nos aparelhos iPhone e Android, o jogo usa o Firebase, da Google:</p>
+<ul>
+<li><strong>Firebase Analytics</strong> registra o uso do app: eventos automáticos do Firebase (como primeira abertura, início de sessão e compra no app) e eventos do jogo (subir de nível, chegar a um novo estágio, liberar expansão, etapas do tutorial, diamantes ganhos e gastos, vídeo premiado assistido), além de duas propriedades (nível e estágio). O Firebase também coleta automaticamente dados técnicos, como um identificador da instalação do app (app instance ID), modelo do aparelho, versão do sistema e do app, idioma e região aproximada. Podem ser coletados também identificadores do aparelho, como o identificador de publicidade, conforme o sistema e o que o Google documenta para o Firebase.</li>
+<li><strong>Firebase Crashlytics</strong> recebe relatórios quando o app fecha por erro: registro técnico da falha (stack trace), modelo do aparelho, versão do sistema e do app, e o estado do app no momento.</li>
+</ul>
+<p>O jogo não envia seu nome, e-mail nem o identificador da sua conta ao Firebase, e não define um identificador de usuário. Não usamos esses dados para publicidade, e sim para entender o que funciona no jogo e corrigir falhas. No Espaço Econômico Europeu, no Reino Unido e na Suíça (onde o formulário de consentimento do Google se aplica), as estatísticas funcionam no modo de consentimento do Firebase com o armazenamento de análise desligado: não guardamos identificadores de análise do seu aparelho. Fora dessas regiões, o armazenamento de análise fica ligado. Em todas as regiões, o armazenamento e a personalização de anúncios do Firebase ficam desligados. Para pedir a exclusão de dados do Firebase ligados ao seu aparelho, escreva para o contato acima.</p>
+
+<h2>Notificações</h2>
+<ul>
+<li><strong>Notificações locais:</strong> avisos agendados no próprio aparelho (obras e produção, entregas e caminhões, presente diário, mercado parado). Eles não enviam dados a ninguém. O jogo pede a permissão do sistema na primeira vez em que há um cronômetro que vale um aviso.</li>
+<li><strong>Notificações push</strong> (amigos e liga, eventos e novidades): depois que a permissão é pedida, o aparelho obtém um token do Firebase Cloud Messaging (FCM). Se você estiver com a conta conectada, enviamos ao nosso servidor esse token, o sistema (iOS ou Android), o idioma do jogo e os tipos de push que você deixou ligados; guardamos até 5 aparelhos por jogador. Os avisos são enviados pelo FCM (e, no iPhone, pelo serviço de notificações da Apple). Tokens que o FCM informa estarem inválidos são apagados, e todos os seus tokens são apagados ao apagar a conta.</li>
+<li><strong>Como desligar:</strong> por tipo, em <strong>Opções › Avisos</strong>; ou todas, nas configurações de notificações do iOS ou do Android.</li>
+</ul>
+
 <h2>Anúncios (Google AdMob)</h2>
-<p>O jogo só mostra anúncios em vídeo quando você escolhe assistir um para ganhar diamantes. Para isso usamos o Google AdMob, que pode coletar o identificador de publicidade do aparelho, endereço IP, localização aproximada, modelo do aparelho e dados de interação com o anúncio, para exibir anúncios, medir resultados e evitar fraudes. No Espaço Econômico Europeu, Reino Unido e Suíça pedimos seu consentimento antes de pedir qualquer anúncio, e você pode mudar a escolha a qualquer momento em <strong>Loja › Diamantes › Privacidade dos anúncios</strong>. Sem consentimento, os anúncios personalizados não são usados. Saiba como o Google usa esses dados: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
+<p>O jogo só mostra anúncios em vídeo (premiados) quando você escolhe assistir um para ganhar diamantes. Não há anúncios automáticos nem intersticiais. Para isso usamos o Google AdMob, que pode coletar o identificador de publicidade do aparelho (quando o sistema o fornece e você permite), endereço IP, localização aproximada, modelo do aparelho e dados de interação com o anúncio, para exibir anúncios, medir resultados e evitar fraudes. O jogo não envia ao AdMob o seu nome, e-mail nem os dados da sua conta. Onde a lei exige (Espaço Econômico Europeu, Reino Unido e Suíça), o jogo mostra o formulário de consentimento do Google (UMP) e só pede anúncios depois da sua escolha; você pode mudar essa escolha no botão <strong>Privacidade dos anúncios</strong>, ao lado do vídeo de diamantes grátis (o botão aparece onde o Google exige). No iPhone, o jogo não pede a permissão de rastreamento (App Tracking Transparency). Saiba como o Google usa esses dados: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
+
 <h2>Compras no app</h2>
-<p>As compras são processadas pelo Google Play ou pela App Store. Nós não recebemos os dados do seu cartão nem da sua conta; recebemos só a confirmação da compra (produto e número da transação), usada para entregar o que você comprou.</p>
-<h2>Motor do jogo (Unity)</h2>
-<p>O jogo é feito com Unity, que pode coletar dados técnicos do aparelho (modelo, sistema, desempenho e falhas) para funcionamento e diagnóstico. Veja <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">a política da Unity</a>.</p>
+<p>As compras (diamantes e moedas) são processadas pela App Store ou pelo Google Play, pelo componente Unity IAP. Nós não recebemos os dados do seu cartão nem da sua conta de pagamento. A loja confirma a compra ao jogo, no seu aparelho, com o produto e o número da transação; o jogo usa esse número para creditar a compra uma única vez e o guarda no progresso (os últimos 200). Se você estiver com a conta conectada, esse registro vai junto com o progresso para a nuvem. O jogo ainda não envia recibos ao nosso servidor.</p>
+
+<h2>Serviços de terceiros que tratam dados</h2>
+<ul>
+<li><strong>Cloudflare</strong> (hospedagem do servidor, banco de dados e armazenamento de arquivos): <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.</li>
+<li><strong>Google</strong>: Firebase (Analytics, Crashlytics, Cloud Messaging), Entrar com Google, Google Play (compras e Install Referrer), e o endereço das fotos de perfil Google, que o aparelho dos seus amigos baixa dos servidores do Google: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> e <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</li>
+<li><strong>Google AdMob</strong> (anúncios): <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</li>
+<li><strong>Apple</strong> (Entrar com a Apple, App Store, notificações no iPhone): <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</li>
+<li><strong>Unity</strong> (o motor do jogo; não ativamos o Unity Analytics nem o Unity Ads): <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">política da Unity</a>.</li>
+</ul>
+<p>Não vendemos seus dados e não os compartilhamos com terceiros para fins de publicidade, além do que o AdMob faz, conforme descrito acima.</p>
+
+<h2>Onde os dados ficam</h2>
+<p>As contas, o progresso e os dados sociais ficam na Cloudflare: no banco de dados Cloudflare D1 e no armazenamento Cloudflare R2, configurados para a região Europa Ocidental. O código do servidor (Cloudflare Workers) roda na rede global da Cloudflare, perto de quem está jogando. Por isso, e porque Google e Apple também operam globalmente, seus dados podem ser tratados fora do seu país; veja as políticas dos provedores acima.</p>
+
+<h2>Por quanto tempo guardamos os dados</h2>
+<ul>
+<li>Conta, progresso e perfil: até você apagar a conta. O progresso substituído fica nas 10 cópias mais recentes; as mais antigas são apagadas.</li>
+<li>Itens da caixa de entrada confirmados: 7 dias. Pedidos de produto fechados: 7 dias. Registros de ajuda em obras: 30 dias. Contadores diários: apagados nos dias seguintes. Resultados da liga: 8 semanas.</li>
+<li>Token de notificação push: até o FCM informar que ele é inválido (por exemplo, app desinstalado), ele passar para outra conta ou você apagar a conta.</li>
+<li>Estatísticas e falhas do Firebase: pelo prazo de retenção definido pelo Google para o Firebase.</li>
+<li>Registros técnicos do servidor (por exemplo, erros e eventos como login e exclusão de conta): mantidos pela Cloudflare pelo prazo do plano que usamos. Backups e registros técnicos dos provedores podem guardar vestígios por tempo limitado, conforme as regras deles.</li>
+<li>Sem conta, nada fica no nosso servidor; o progresso local é apagado ao desinstalar o jogo.</li>
+</ul>
+
+<h2>Como apagar a sua conta e os seus dados</h2>
+<p>Dentro do jogo: <strong>Opções › Conta › Apagar conta</strong>, e toque de novo para confirmar. Isso apaga para sempre, no nosso servidor: a conta (incluindo e-mail, nome e a foto), o progresso e todas as cópias dele, o perfil social e o código de amigo, as suas amizades (nos dois sentidos) e pedidos de amizade, a sua caixa de entrada, os pedidos de produto, os registros de ajuda e de presentes do dia, as denúncias de nome, as suas participações na liga e os tokens de notificação push. Se a conta é da Apple, antes disso tentamos revogar o acesso do jogo à sua conta Apple.</p>
+<p>O que permanece: presentes, curtidas, ajudas e recompensas que você já enviou a outros jogadores e que eles já aplicaram aos seus progressos (sem ligação com a sua conta); o progresso no seu aparelho, que continua lá mas deixa de pertencer a uma conta; e dados do Firebase, do AdMob e das lojas, que seguem as regras de cada provedor. Se não conseguir entrar no jogo, peça a exclusão por e-mail para <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
 <h2>Bases legais (GDPR/LGPD)</h2>
-<ul><li>Consentimento: anúncios personalizados e acesso ao identificador do aparelho.</li><li>Execução de contrato: entregar compras feitas no app e guardar o progresso na nuvem quando você entra com o Google.</li><li>Interesse legítimo: segurança, prevenção de fraude e funcionamento do jogo.</li></ul>
+<ul><li>Consentimento: anúncios personalizados e uso do identificador de publicidade (onde o formulário de consentimento do Google se aplica), permissão para enviar notificações.</li><li>Execução de contrato: guardar o progresso na nuvem e fornecer os recursos sociais quando você entra com uma conta, e entregar as compras feitas no app.</li><li>Interesse legítimo: segurança, prevenção de fraude e abuso (como limite de requisições e verificação antifraude dos rankings), relatórios de falhas e, fora do Espaço Econômico Europeu, Reino Unido e Suíça, estatísticas de uso para melhorar o jogo.</li></ul>
+
 <h2>Seus direitos</h2>
-<p>Você pode pedir acesso, correção ou exclusão dos seus dados, retirar o consentimento e reclamar a uma autoridade de proteção de dados. O progresso salvo só no aparelho é apagado ao desinstalar o jogo; o da nuvem, ao apagar a conta. Para dados tratados pelo Google ou pela Unity, use também as ferramentas deles. Para qualquer pedido, escreva para <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+<p>Você pode pedir acesso, correção, portabilidade ou exclusão dos seus dados, retirar o consentimento e reclamar a uma autoridade de proteção de dados (no Brasil, a ANPD). Parte disso você faz no próprio jogo: trocar o nome do mercado e o avatar, desligar a foto do Google, sair do ranking, desligar notificações e apagar a conta. Para dados tratados pelo Google, pela Apple ou pela Unity, use também as ferramentas deles. Para qualquer pedido, escreva para <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
 <h2>Crianças</h2>
 <p>O jogo não é direcionado a crianças menores de 13 anos e não coleta conscientemente dados delas. Se você acredita que uma criança nos enviou dados, entre em contato para que sejam apagados.</p>
+
+<h2>Segurança</h2>
+<p>A comunicação entre o jogo e o servidor usa HTTPS. O acesso ao progresso e aos dados sociais exige uma sessão assinada do servidor (válida por 180 dias), e as chaves do servidor ficam como segredos na Cloudflare, não dentro do jogo. Nenhum sistema é totalmente seguro, mas limitamos o que guardamos ao necessário.</p>
+
 <h2>Mudanças</h2>
 <p>Se esta política mudar, a nova versão será publicada nesta página com a data de atualização.</p>
 </section>
 
 <section class="lang" id="en" lang="en">
 <h2>Who we are</h2>
-<p>Checkout - Supermercado Simulator ("the game") is developed by Lucas Furini, an independent developer, who is the controller of the data described here. Contact: <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
-<h2>What the game stores</h2>
-<p>Without signing in, the game asks for no name, e-mail or password, and your progress (market, coins, diamonds, settings) is saved only on your device.</p>
-<h2>Google account and cloud progress (optional)</h2>
-<p>If you tap <strong>Sign in with Google</strong>, Google gives us your account identifier, name and e-mail, and we keep your progress on our server so you can continue on another device. We store: the account (Google identifier, name, e-mail, creation and last-access dates), the game progress, an identifier of the device that sent each version and up to 10 recent copies of the progress, to recover something replaced by mistake. We never receive your Google password. The data is stored on Prisma Postgres (servers in Germany) and the game server runs on Render (Germany). You can sign out at any time or delete the account in <strong>Guide › Account and cloud › Delete account</strong>, which permanently deletes the account and every copy of the progress in the cloud. You can also ask for deletion by e-mail.</p>
+<p>Checkout: Supermarket Sim ("the game"), for iPhone (iOS) and Android, is developed by Lucas Lopes Furini, an independent developer, who is the controller of the data described here. Contact: <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
+<h2>Summary</h2>
+<ul>
+<li>You can play without an account: then your progress stays only on your device.</li>
+<li>If you sign in with Google or Apple, we keep your account and progress on our servers (Cloudflare) so you can continue on another device and use the social features.</li>
+<li>The game uses Firebase (Google) for usage statistics, crash reports and push notifications, and Google AdMob for rewarded videos, which only appear if you choose to watch one.</li>
+<li>The game does not ask for tracking permission (App Tracking Transparency) and does not sell data.</li>
+<li>You can delete your account and cloud data at any time, inside the game.</li>
+</ul>
+
+<h2>Playing without an account</h2>
+<p>Without signing in, the game asks for no name, e-mail or password, and your progress (market, coins, diamonds, settings) is saved only on your device; none of it is sent to our server. Even without an account, your device talks to the third-party services described below: statistics and crash reports (Firebase), ads (AdMob, only if you watch one) and your system's store (purchases).</p>
+
+<h2>Google or Apple account and cloud progress (optional)</h2>
+<p>If you tap <strong>Sign in with Google</strong> or <strong>Sign in with Apple</strong> (Apple on iPhone only), the provider gives us your account identifier and, depending on the case, your name and e-mail (Apple may provide a private relay e-mail address, and sends your name only if you share it at the first login). With Google we also receive the address of your Google profile photo. We never receive your password. For Apple sign-in we also keep a refresh token issued by Apple, used only to end the game's access to your Apple account when you delete your game account.</p>
+<p>On our server we store:</p>
+<ul>
+<li>the account: Google or Apple identifier, e-mail, name, Google photo address (if any), creation date and last-access date;</li>
+<li>the game progress (market, coins, diamonds, settings, the record of purchases already credited and similar data), a summary of it (such as level and experience), an identifier of the device that sent each version and up to 10 previous copies of the progress, to recover something replaced by mistake;</li>
+<li>the approximate country of your connection (reported by Cloudflare, not by GPS), used for your country's ranking;</li>
+<li>the data of the social features, listed in the next section, if you use them;</li>
+<li>the device's push notification token, if you turn notifications on (see below).</li>
+</ul>
+<p>Your IP address is used by our server only to limit the number of requests per minute (abuse protection), in memory, and is not written to our database. Cloudflare, as our hosting provider, processes IP addresses to deliver and protect the service under its own policy.</p>
+
+<h2>Social features: friends, visits, gifts, help, requests, invites and rankings</h2>
+<p>These features only work with an account. For them, the server creates your profile and stores: a friend code (8 letters), the market name you choose (3 to 20 characters, with a profanity filter; 3 reports from different players hide the name until you change it), your avatar (one of the game's characters), level, market stage, experience, total likes received, a public block with your builds in progress and the market rating, your approximate country, and an anti-cheat counter (impossible levels or points; players with several incidents are hidden from the rankings). The game has no chat or free-text messages between players.</p>
+<ul>
+<li><strong>Friends:</strong> added by friend code or invite link; up to 50 friends. We store friend requests and the friend list. What happens between friends (a friend request or acceptance, daily gift, like, help on a build, fulfilled product request, invite reward, league result) becomes an item in your inbox, which the game applies to your progress and confirms; confirmed items are deleted from the server after 7 days.</li>
+<li><strong>What your accepted friends see:</strong> your market name, avatar, level, stage, likes, the public block, your open product requests and, if you signed in with Google, your Google profile photo (you can turn this off with <strong>Show my Google photo to friends</strong>; without the photo they see your avatar). A friend can also <strong>visit your market</strong>: the server hands them a read-only copy of your saved progress to display your market.</li>
+<li><strong>Help, gifts and requests:</strong> we store who helped on which build (for up to 30 days), the day's gifts and likes (for the daily limits) and your product requests (product, quantity, status; they expire after 24 hours and, once closed, are deleted after 7 days).</li>
+<li><strong>Invites:</strong> we store who invited you and whether the rewards have been given. On Android, the game reads once, through Google Play (Install Referrer), whether you installed through an invite link. The invite link page loads no external scripts or trackers.</li>
+<li><strong>World and country rankings:</strong> they show the top 100 and your position. These lists are public and can be read even by people who are not signed in: they show friend code, market name, avatar, level, experience, stage and country (flag). You can leave these lists by turning off <strong>Show me in the ranking</strong> in the ranking window. The friends ranking only shows you and your friends.</li>
+<li><strong>Weekly league:</strong> you are placed in a group of up to 30 players of the same division and level band. Group members see place, market name, avatar, level and points. We keep your weekly points, final result and prizes for 8 weeks.</li>
+</ul>
+
+<h2>Statistics and crash reports (Firebase)</h2>
+<p>On iPhone and Android devices the game uses Firebase, from Google:</p>
+<ul>
+<li><strong>Firebase Analytics</strong> records how the app is used: Firebase's automatic events (such as first open, session start and in-app purchase) and the game's own events (level up, reaching a new stage, unlocking an expansion, tutorial steps, diamonds earned and spent, rewarded video watched), plus two properties (level and stage). Firebase also automatically collects technical data, such as an app instance ID, device model, system and app version, language and approximate region. Device identifiers such as the advertising ID may also be collected, depending on the system and on what Google documents for Firebase.</li>
+<li><strong>Firebase Crashlytics</strong> receives reports when the app closes because of an error: the technical record of the crash (stack trace), device model, system and app version, and the app's state at that moment.</li>
+</ul>
+<p>The game does not send your name, e-mail or account identifier to Firebase and does not set a user ID. We do not use this data for advertising; we use it to understand what works in the game and to fix crashes. In the European Economic Area, the UK and Switzerland (where Google's consent form applies), statistics run in Firebase consent mode with analytics storage turned off: no analytics identifiers are kept on your device. Outside those regions, analytics storage is on. In every region, Firebase ad storage and ad personalization are turned off. To ask for deletion of Firebase data tied to your device, write to the contact above.</p>
+
+<h2>Notifications</h2>
+<ul>
+<li><strong>Local notifications:</strong> alerts scheduled on the device itself (builds and production, deliveries and trucks, daily gift, idle market). They send data to no one. The game asks for the system permission the first time there is a timer worth an alert.</li>
+<li><strong>Push notifications</strong> (friends and league, events and news): after the permission is asked, the device gets a Firebase Cloud Messaging (FCM) token. If you are signed in, we send our server that token, the system (iOS or Android), the game's language and the kinds of push you left on; we keep up to 5 devices per player. Alerts are delivered through FCM (and, on iPhone, Apple's notification service). Tokens that FCM reports as invalid are deleted, and all your tokens are deleted when you delete the account.</li>
+<li><strong>How to turn them off:</strong> by kind, in <strong>Settings › Alerts</strong>; or all of them, in the iOS or Android notification settings.</li>
+</ul>
+
 <h2>Ads (Google AdMob)</h2>
-<p>The game only shows video ads when you choose to watch one to earn diamonds. We use Google AdMob, which may collect your device's advertising ID, IP address, approximate location, device model and ad interaction data to serve ads, measure them and prevent fraud. In the European Economic Area, the UK and Switzerland we ask for your consent before requesting any ad, and you can change your choice at any time in <strong>Store › Diamonds › Ad privacy</strong>. Without consent, personalised ads are not used. How Google uses this data: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
+<p>The game only shows video ads (rewarded) when you choose to watch one to earn diamonds. There are no automatic or interstitial ads. For this we use Google AdMob, which may collect your device's advertising ID (when the system provides it and you allow it), IP address, approximate location, device model and ad interaction data to serve ads, measure them and prevent fraud. The game does not send AdMob your name, e-mail or account data. Where the law requires it (European Economic Area, UK and Switzerland), the game shows Google's consent form (UMP) and only requests ads after your choice; you can change that choice with the <strong>Ad privacy</strong> button next to the free-diamonds video (the button appears where Google requires it). On iPhone, the game does not ask for tracking permission (App Tracking Transparency). How Google uses this data: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
+
 <h2>In-app purchases</h2>
-<p>Purchases are processed by Google Play or the App Store. We never receive your card or account details; we only receive the purchase confirmation (product and transaction number), used to deliver what you bought.</p>
-<h2>Game engine (Unity)</h2>
-<p>The game is built with Unity, which may collect technical device data (model, operating system, performance and crashes) for operation and diagnostics. See <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity's privacy policy</a>.</p>
+<p>Purchases (diamonds and coins) are processed by the App Store or Google Play, through the Unity IAP component. We never receive your card or payment account details. The store confirms the purchase to the game, on your device, with the product and the transaction number; the game uses that number to credit the purchase only once and keeps it in the progress (the last 200). If you are signed in, that record goes with the progress to the cloud. The game does not yet send receipts to our server.</p>
+
+<h2>Third-party services that process data</h2>
+<ul>
+<li><strong>Cloudflare</strong> (server hosting, database and file storage): <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>.</li>
+<li><strong>Google</strong>: Firebase (Analytics, Crashlytics, Cloud Messaging), Sign in with Google, Google Play (purchases and Install Referrer), and the Google profile photo addresses, which your friends' devices download from Google's servers: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</li>
+<li><strong>Google AdMob</strong> (ads): <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</li>
+<li><strong>Apple</strong> (Sign in with Apple, App Store, iPhone notifications): <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</li>
+<li><strong>Unity</strong> (the game engine; we do not enable Unity Analytics or Unity Ads): <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity's privacy policy</a>.</li>
+</ul>
+<p>We do not sell your data and do not share it with third parties for advertising purposes, beyond what AdMob does as described above.</p>
+
+<h2>Where the data is stored</h2>
+<p>Accounts, progress and social data are stored at Cloudflare: in the Cloudflare D1 database and Cloudflare R2 storage, set up for the Western Europe region. The server code (Cloudflare Workers) runs on Cloudflare's global network, close to where you play. Because of this, and because Google and Apple also operate globally, your data may be processed outside your country; see the providers' policies above.</p>
+
+<h2>How long we keep data</h2>
+<ul>
+<li>Account, progress and profile: until you delete the account. Replaced progress is kept in the 10 most recent copies; older ones are deleted.</li>
+<li>Confirmed inbox items: 7 days. Closed product requests: 7 days. Build-help records: 30 days. Daily counters: deleted in the following days. League results: 8 weeks.</li>
+<li>Push notification token: until FCM reports it as invalid (for example, app uninstalled), it moves to another account, or you delete the account.</li>
+<li>Firebase statistics and crashes: for the retention period Google sets for Firebase.</li>
+<li>Server technical logs (for example errors and events such as sign-in and account deletion): kept by Cloudflare for the period of the plan we use. Providers' backups and technical logs may hold traces for a limited time under their own rules.</li>
+<li>Without an account, nothing is kept on our server; local progress is deleted when you uninstall the game.</li>
+</ul>
+
+<h2>How to delete your account and data</h2>
+<p>Inside the game: <strong>Settings › Account › Delete account</strong>, then tap again to confirm. This permanently deletes, on our server: the account (including e-mail, name and photo), the progress and every copy of it, the social profile and friend code, your friendships (both ways) and friend requests, your inbox, product requests, help and daily gift records, name reports, your league entries and your push notification tokens. If the account is an Apple one, before that we try to revoke the game's access to your Apple account.</p>
+<p>What remains: gifts, likes, helps and rewards you already sent to other players that they already applied to their progress (with no link to your account); the progress on your device, which stays there but no longer belongs to an account; and Firebase, AdMob and store data, which follow each provider's rules. If you cannot get into the game, ask for deletion by e-mail at <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
 <h2>Legal bases (GDPR)</h2>
-<ul><li>Consent: personalised ads and access to the device identifier.</li><li>Performance of a contract: delivering in-app purchases and keeping your progress in the cloud when you sign in with Google.</li><li>Legitimate interest: security, fraud prevention and running the game.</li></ul>
+<ul><li>Consent: personalised ads and use of the advertising identifier (where Google's consent form applies), permission to send notifications.</li><li>Performance of a contract: keeping your progress in the cloud and providing the social features when you sign in with an account, and delivering in-app purchases.</li><li>Legitimate interest: security, fraud and abuse prevention (such as request rate limits and the rankings' anti-cheat checks), crash reports and, outside the European Economic Area, the UK and Switzerland, usage statistics to improve the game.</li></ul>
+
 <h2>Your rights</h2>
-<p>You may request access to, correction or deletion of your data, withdraw your consent, and lodge a complaint with a data protection authority. Progress kept only on the device is deleted when you uninstall the game; cloud progress, when you delete the account. For data processed by Google or Unity, you can also use their tools. For any request, write to <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+<p>You may request access to, correction, portability or deletion of your data, withdraw your consent, and lodge a complaint with a data protection authority (in Brazil, the ANPD). Some of this you can do in the game itself: change the market name and avatar, turn off the Google photo, leave the ranking, turn off notifications and delete the account. For data processed by Google, Apple or Unity, you can also use their tools. For any request, write to <a href="mailto:lucaslfurini@gmail.com">lucaslfurini@gmail.com</a>.</p>
+
 <h2>Children</h2>
 <p>The game is not directed at children under 13 and does not knowingly collect their data. If you believe a child has provided us data, contact us and it will be deleted.</p>
+
+<h2>Security</h2>
+<p>Communication between the game and the server uses HTTPS. Access to progress and social data requires a session signed by the server (valid for 180 days), and the server's keys are kept as secrets at Cloudflare, not inside the game. No system is completely secure, but we limit what we store to what is needed.</p>
+
 <h2>Changes</h2>
 <p>If this policy changes, the new version will be published on this page with its update date.</p>
 </section>
